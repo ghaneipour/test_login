@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\modelPedram2;
+use app\Http\Controllers\ModelPedram2Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +40,11 @@ Route::middleware('checkToken')->group(function () {
     });
 });
 
+Route::any('/gpsshow',[\App\Http\Controllers\ModelPedram2Controller::class,'controller1'])->name( 'gpsshow' ); 
+
+
+Route::post('/show','\App\Http\Controllers\ModelPedram2Controller@store'); 
+Route::get('/show/{id}','\App\Http\Controllers\ModelPedram2Controller@show'); 
+Route::delete('/show/{id}','\App\Http\Controllers\ModelPedram2Controller@destroy'); 
+Route::put('/show/{id}','\App\Http\Controllers\ModelPedram2Controller@update'); 
+ 
