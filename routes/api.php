@@ -41,5 +41,10 @@ Route::middleware('checkToken')->group(function () {
 });
 
 Route::any('/gpsshow',[\App\Http\Controllers\ModelPedram2Controller::class,'controller1'])->name( 'gpsshow' ); 
-Route::any('/show','\App\Http\Controllers\ModelPedram2Controller@controller2'); 
+
+
+Route::post('/show','\App\Http\Controllers\ModelPedram2Controller@store'); 
+Route::get('/show/{id}','\App\Http\Controllers\ModelPedram2Controller@show'); 
+Route::delete('/show/{id}','\App\Http\Controllers\ModelPedram2Controller@destroy'); 
+Route::put('/show/{id}','\App\Http\Controllers\ModelPedram2Controller@update'); 
  

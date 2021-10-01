@@ -22,6 +22,10 @@ Route::get('/', function () {
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('regped',function(){
+    return view("registerPedram");
+});
+
 Route::any('user', function () {
     return view('user');
 });

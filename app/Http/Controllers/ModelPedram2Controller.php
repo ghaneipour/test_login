@@ -35,7 +35,14 @@ class ModelPedram2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new \App\Models\modelPedram2;
+        //$item->fill($request);
+        $item->fname=$request->fname;
+        $item->lname=$request->lname;
+        $item->password=$request->address;
+        $item->save();
+        //return response($item);
+        return response($item->toArray());
     }
 
     /**
@@ -44,9 +51,21 @@ class ModelPedram2Controller extends Controller
      * @param  \App\Models\modelPedram2  $modelPedram2
      * @return \Illuminate\Http\Response
      */
-    public function show(modelPedram2 $modelPedram2)
+    public function show(int $id)
     {
-        //
+        $item = \App\Models\modelPedram2::query()->find($id);//findorfail($id)
+       
+       if($item==null)
+       {
+        echo("null :304<br>");
+       }
+       else
+       { 
+       echo(response($item)."<br>");
+       }
+       
+
+        return response(200);
     }
 
     /**
@@ -67,9 +86,24 @@ class ModelPedram2Controller extends Controller
      * @param  \App\Models\modelPedram2  $modelPedram2
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, modelPedram2 $modelPedram2)
+    public function update(Request $request, modelPedram2 $modelPedram2,int $id)
     {
-        //
+            //dd($id."<br>".$request);
+        $item = \App\Models\modelPedram2::query()->find($id);//findorfail($id)
+       
+       if($item==null)
+       {
+           echo("null :304<br>");
+       }
+       else
+       { 
+           $item->fill($request->all());
+           $item->save();
+           echo(response($item)."<br>");
+       }
+       
+
+        return response(200);
     }
 
     /**
@@ -78,9 +112,23 @@ class ModelPedram2Controller extends Controller
      * @param  \App\Models\modelPedram2  $modelPedram2
      * @return \Illuminate\Http\Response
      */
-    public function destroy(modelPedram2 $modelPedram2)
+    public function destroy(int $id)
     {
-        //
+       $item = \App\Models\modelPedram2::query()->find($id);//findorfail($id)
+       
+       if($item==null)
+       {
+        echo("Deleted old time :304<br>");
+       }
+       else
+       {
+
+       $item->delete();
+       echo("deleted id:".$id."  :200<br>");
+       }
+       
+
+        return response(200);
     }
 
      //   array(
