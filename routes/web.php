@@ -25,6 +25,9 @@ Route::get('/', function () {
 Route::any('user', function () {
     return view('user');
 });
+Route::any('gps', function () {
+    return view('gps');
+});
 
 Route::get('/', function () {
     return view('welcome');
